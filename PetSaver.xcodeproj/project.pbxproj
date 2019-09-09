@@ -16,6 +16,8 @@
 		0E7B87002326A77900511FD4 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B86FF2326A77900511FD4 /* HomeController.swift */; };
 		0E7B87022326A7C600511FD4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B87012326A7C600511FD4 /* LoginController.swift */; };
 		0E7B87042326AE9600511FD4 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B87032326AE9600511FD4 /* SignUpController.swift */; };
+		0E7B87062326BDEA00511FD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */; };
+		26FD1B9AD00F087A356FA839 /* Pods_PetSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,10 @@
 		0E7B86FF2326A77900511FD4 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		0E7B87012326A7C600511FD4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0E7B87032326AE9600511FD4 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetSaver.release.xcconfig"; path = "Target Support Files/Pods-PetSaver/Pods-PetSaver.release.xcconfig"; sourceTree = "<group>"; };
+		1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetSaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D26CE3AC1D997236AECA954F /* Pods-PetSaver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetSaver.debug.xcconfig"; path = "Target Support Files/Pods-PetSaver/Pods-PetSaver.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FD1B9AD00F087A356FA839 /* Pods_PetSaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +55,8 @@
 			children = (
 				0E202D5E232574DD00A0338C /* PetSaver */,
 				0E202D5D232574DD00A0338C /* Products */,
+				5F8E46081F50053F3CF460EF /* Pods */,
+				D1D60DF751E2947C90DAF76A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +81,7 @@
 				0E7B86FC2326A3BC00511FD4 /* MainTabBarController.swift */,
 				0E7B87012326A7C600511FD4 /* LoginController.swift */,
 				0E7B87032326AE9600511FD4 /* SignUpController.swift */,
+				0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */,
 			);
 			path = PetSaver;
 			sourceTree = "<group>";
@@ -92,6 +102,24 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		5F8E46081F50053F3CF460EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D26CE3AC1D997236AECA954F /* Pods-PetSaver.debug.xcconfig */,
+				159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D1D60DF751E2947C90DAF76A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E202D6E232574DE00A0338C /* Build configuration list for PBXNativeTarget "PetSaver" */;
 			buildPhases = (
+				65608D9E93539E43956692A2 /* [CP] Check Pods Manifest.lock */,
 				0E202D58232574DD00A0338C /* Sources */,
 				0E202D59232574DD00A0338C /* Frameworks */,
 				0E202D5A232574DD00A0338C /* Resources */,
+				1B18FA81EEC7BC0818DF7636 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,12 +181,66 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E202D6A232574DE00A0338C /* LaunchScreen.storyboard in Resources */,
+				0E7B87062326BDEA00511FD4 /* GoogleService-Info.plist in Resources */,
 				0E202D67232574DE00A0338C /* Assets.xcassets in Resources */,
 				0E202D65232574DD00A0338C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B18FA81EEC7BC0818DF7636 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PetSaver/Pods-PetSaver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PetSaver/Pods-PetSaver-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65608D9E93539E43956692A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PetSaver-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0E202D58232574DD00A0338C /* Sources */ = {
@@ -312,6 +396,7 @@
 		};
 		0E202D6F232574DE00A0338C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D26CE3AC1D997236AECA954F /* Pods-PetSaver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -330,6 +415,7 @@
 		};
 		0E202D70232574DE00A0338C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
