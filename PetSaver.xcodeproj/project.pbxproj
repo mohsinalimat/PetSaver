@@ -71,6 +71,7 @@
 		0E202D5E232574DD00A0338C /* PetSaver */ = {
 			isa = PBXGroup;
 			children = (
+				0EC1A49F2326EBB500AF895D /* Login */,
 				0E7B86FE2326A77000511FD4 /* Home */,
 				0E7B86F923269FF400511FD4 /* Utils */,
 				0E202D5F232574DD00A0338C /* AppDelegate.swift */,
@@ -79,8 +80,6 @@
 				0E202D68232574DE00A0338C /* LaunchScreen.storyboard */,
 				0E202D6B232574DE00A0338C /* Info.plist */,
 				0E7B86FC2326A3BC00511FD4 /* MainTabBarController.swift */,
-				0E7B87012326A7C600511FD4 /* LoginController.swift */,
-				0E7B87032326AE9600511FD4 /* SignUpController.swift */,
 				0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */,
 			);
 			path = PetSaver;
@@ -102,13 +101,21 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		0EC1A49F2326EBB500AF895D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0E7B87012326A7C600511FD4 /* LoginController.swift */,
+				0E7B87032326AE9600511FD4 /* SignUpController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		5F8E46081F50053F3CF460EF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				D26CE3AC1D997236AECA954F /* Pods-PetSaver.debug.xcconfig */,
 				159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
