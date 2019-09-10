@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
-class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
     
     let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -25,6 +28,13 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        
+//        if let editImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+//            plusPhotoButton.setImage(editImage.withRenderingMode(.alwaysOriginal), for: .normal)
+//        } else if let originalImage = info["UIImagePickerControllerEditedImage"]
+//    }
     
     let emailTextField: UITextField = {
         let tf = UITextField()
@@ -90,7 +100,34 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }()
     
     @objc func handleSignUp() {
-        print("123")
+       
+        guard let email = emailTextField.text, email.count > 0 else { return }
+        guard let username = usernameTextField.text, username.count > 0 else { return }
+        guard let password = passwordTextField.text, password.count > 0 else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
+            if let err = error {
+                print("Failed to create user: ", err)
+                return
+            }
+            guard let authResult = authResult else { return }
+            let user = authResult.user
+            print("Successfully created user: ", user.uid)
+            
+            let uid = user.uid
+            
+            let usernameValues = ["username": username]
+            let values = [uid: usernameValues]
+            
+            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if let err = err {
+                    print("Failed to save user info into db: ", err)
+                    return
+                }
+                print ("Successfully save user info into db")
+            })         
+            
+        })
     }
     
     let alreadyHaveAnAccount: UIButton = {
@@ -102,18 +139,19 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
-        button.addTarget(self, action: #selector(handleAlreadyHaveAnAccount), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(handleAlreadyHaveAnAccount), for: .touchUpInside)
         
         return button
     }()
     
-    @objc func handleAlreadyHaveAnAccount() {
-        _ = navigationController?.popViewController(animated: true)
-    }
+//    @objc func handleAlreadyHaveAnAccount() {
+//        _ = navigationController?.popViewController(animated: true)
+//        print(navigationController)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         view.backgroundColor = .white
         
         view.addSubview(alreadyHaveAnAccount)
@@ -127,6 +165,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     fileprivate func setupInputFields() {
+        
         let stackView = UIStackView(arrangedSubviews: [emailTextField, usernameTextField, passwordTextField, signUpButton])
         stackView.distribution = .fillEqually
         stackView.axis = .vertical

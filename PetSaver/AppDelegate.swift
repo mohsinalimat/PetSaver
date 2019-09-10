@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        window = UIWindow()
-        window?.rootViewController = SignUpController()
+       // window = UIWindow()
+       // window?.rootViewController = SignUpController()
         
         return true
     }

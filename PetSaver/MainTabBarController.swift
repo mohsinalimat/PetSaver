@@ -7,27 +7,26 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        
-       // let index = viewControllers?.firstIndex(of: viewController)
-        
-        return true
-        
+        return false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
+        //self.delegate = self
         
+        //view.backgroundColor = .yellow
         let loginController = LoginController()
         let navController = UINavigationController(rootViewController: loginController)
+       
         self.present(navController, animated: true, completion: nil)
-        
         //setupViewControllers()
+        
     }
     
     func setupViewControllers() {

@@ -11,6 +11,8 @@ import Firebase
 
 class LoginController: UIViewController {
     
+    
+    
     let emailTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
@@ -90,19 +92,21 @@ class LoginController: UIViewController {
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
-        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         
        return button
     }()
     
-    @objc func handleShowSignUp() {
-        let signUpController = SignUpController()
-        navigationController?.pushViewController(signUpController, animated: true)
-        print("123")
-    }
+//    @objc func handleShowSignUp() {
+//        let signUpController = SignUpController()
+//        print(navigationController)
+//        self.navigationController?.pushViewController(signUpController, animated: true)
+//        print("123")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
