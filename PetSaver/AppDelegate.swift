@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         window = UIWindow()
-        window?.rootViewController = MainTabBarController()
+        window?.rootViewController = SignUpController()
         
         return true
     }
