@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     
@@ -152,6 +152,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             return
                         }
                         print ("Successfully save user info into db")
+                        
+                        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+                        
+                        mainTabBarController.setupViewControllers()
+                        
+                        self.dismiss(animated: true, completion: nil)
                     })
                 })
                

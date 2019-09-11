@@ -81,6 +81,12 @@ class LoginController: UIViewController {
             //print("Successfully logged back in with user: ", user?.uid)
         }
         
+        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+        
+        mainTabBarController.setupViewControllers()
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
     let dontHaveAccountButton: UIButton = {
@@ -92,17 +98,18 @@ class LoginController: UIViewController {
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
-        //button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         
        return button
     }()
     
-//    @objc func handleShowSignUp() {
-//        let signUpController = SignUpController()
-//        print(navigationController)
+    @objc func handleShowSignUp() {
+        let signUpController = SignUpController()
+        print(navigationController)
 //        self.navigationController?.pushViewController(signUpController, animated: true)
-//        print("123")
-//    }
+        
+        print("123")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
