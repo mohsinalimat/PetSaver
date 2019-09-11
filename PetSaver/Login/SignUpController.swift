@@ -129,37 +129,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let filename = NSUUID().uuidString
             
             Storage.storage().reference().child("profile_images").child(filename).putData(uploadData, metadata: nil, completion: { (metadata, err) in
-                
+
                 if let err = err {
                     print("Failed to upload profile image: ", err)
-                    
+
                 }
-                
-                let storageRef = Storage.storage().reference().child(filename)
-                _ = storageRef.downloadURL(completion: { (url: URL?, err) in
+
+                let imageStorageRef = Storage.storage().reference().child("profile_images").child(filename)
+                imageStorageRef.downloadURL(completion: { (url, error) in
                     if let err = err {
                         print("Failed to get image url: ", err)
                         return
                     }
-                    print("image url is: \(url)")
+                    guard let profileImageUrl = url?.absoluteString else { return }
+                    let uid = user.uid
+                    let dictionaryValues = ["username": username, "profileImageUrl": profileImageUrl] as [String : Any]
+                    let values = [uid: dictionaryValues]
                     
-                }) 
-                
-                
+                    Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+                        if let err = err {
+                            print("Failed to save user info into db: ", err)
+                            return
+                        }
+                        print ("Successfully save user info into db")
+                    })
+                })
+               
             })
             
-//            let uid = user.uid
-//
-//            let usernameValues = ["username": username]
-//            let values = [uid: usernameValues]
-//
-//            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
-//                if let err = err {
-//                    print("Failed to save user info into db: ", err)
-//                    return
-//                }
-//                print ("Successfully save user info into db")
-//            })
             
         })
     }
