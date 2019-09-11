@@ -29,12 +29,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePickerController, animated: true, completion: nil)
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        
-//        if let editImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-//            plusPhotoButton.setImage(editImage.withRenderingMode(.alwaysOriginal), for: .normal)
-//        } else if let originalImage = info["UIImagePickerControllerEditedImage"]
-//    }
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editImage = info[.editedImage] as? UIImage {
+            plusPhotoButton.setImage(editImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
+        plusPhotoButton.layer.borderWidth = 3
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     let emailTextField: UITextField = {
         let tf = UITextField()
@@ -114,18 +123,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let user = authResult.user
             print("Successfully created user: ", user.uid)
             
-            let uid = user.uid
+            guard let image = self.plusPhotoButton.imageView?.image else { return }
+            guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
             
-            let usernameValues = ["username": username]
-            let values = [uid: usernameValues]
+            let filename = NSUUID().uuidString
             
-            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+            Storage.storage().reference().child("profile_images").child(filename).putData(uploadData, metadata: nil, completion: { (metadata, err) in
+                
                 if let err = err {
-                    print("Failed to save user info into db: ", err)
-                    return
+                    print("Failed to upload profile image: ", err)
+                    
                 }
-                print ("Successfully save user info into db")
-            })         
+                
+                let storageRef = Storage.storage().reference().child(filename)
+                _ = storageRef.downloadURL(completion: { (url: URL?, err) in
+                    if let err = err {
+                        print("Failed to get image url: ", err)
+                        return
+                    }
+                    print("image url is: \(url)")
+                    
+                }) 
+                
+                
+            })
+            
+//            let uid = user.uid
+//
+//            let usernameValues = ["username": username]
+//            let values = [uid: usernameValues]
+//
+//            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+//                if let err = err {
+//                    print("Failed to save user info into db: ", err)
+//                    return
+//                }
+//                print ("Successfully save user info into db")
+//            })
             
         })
     }
@@ -151,14 +185,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        
         view.backgroundColor = .white
         
         view.addSubview(alreadyHaveAnAccount)
         alreadyHaveAnAccount.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
         
         view.addSubview(plusPhotoButton)
-        plusPhotoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
+        plusPhotoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
         plusPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         setupInputFields()
