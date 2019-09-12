@@ -18,7 +18,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate = self
+        //self.delegate = self
         
         if Auth.auth().currentUser == nil {
 
@@ -42,6 +42,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: HomeController())
         
         let petSearchController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: PetSearchController())
+        
         
         tabBar.tintColor = .black
         

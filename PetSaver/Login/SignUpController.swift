@@ -176,15 +176,15 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
-        //button.addTarget(self, action: #selector(handleAlreadyHaveAnAccount), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleAlreadyHaveAnAccount), for: .touchUpInside)
         
         return button
     }()
     
-//    @objc func handleAlreadyHaveAnAccount() {
-//        _ = navigationController?.popViewController(animated: true)
-//        print(navigationController)
-//    }
+    @objc func handleAlreadyHaveAnAccount() {
+        _ = navigationController?.popViewController(animated: true)
+        print(navigationController)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,7 +193,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         view.backgroundColor = .white
         
         view.addSubview(alreadyHaveAnAccount)
-        alreadyHaveAnAccount.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        alreadyHaveAnAccount.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 0, height: 50)
         
         view.addSubview(plusPhotoButton)
         plusPhotoButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)

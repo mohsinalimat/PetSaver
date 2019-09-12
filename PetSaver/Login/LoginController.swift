@@ -70,7 +70,8 @@ class LoginController: UIViewController {
     @objc func handleLogin() {
         guard let email = emailTextField.text else { return }
         guard let passowrd = passwordTextField.text else { return }
-        
+       
+      
         Auth.auth().signIn(withEmail: email, password: passowrd) { (user, err) in
             
             if let err = err {
@@ -78,14 +79,13 @@ class LoginController: UIViewController {
                 return
             }
             
-            //print("Successfully logged back in with user: ", user?.uid)
+            //print("Successfully logged back in with user: ", )
+            guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+            
+            mainTabBarController.setupViewControllers()
+            
+            self.dismiss(animated: true, completion: nil)
         }
-        
-        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
-        
-        mainTabBarController.setupViewControllers()
-        
-        self.dismiss(animated: true, completion: nil)
         
     }
     
@@ -105,10 +105,13 @@ class LoginController: UIViewController {
     
     @objc func handleShowSignUp() {
         let signUpController = SignUpController()
-        print(navigationController)
-//        self.navigationController?.pushViewController(signUpController, animated: true)
+        self.navigationController?.pushViewController(signUpController, animated: true)
         
         print("123")
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
