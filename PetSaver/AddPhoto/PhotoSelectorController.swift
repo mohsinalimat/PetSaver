@@ -22,6 +22,12 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
         
         collectionView.register(PhotoSelectorCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(PhotoSelectorHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        
+        fetchPhotos()
+    }
+    
+    fileprivate func fetchPhotos() {
+        print("fetching photos...")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
