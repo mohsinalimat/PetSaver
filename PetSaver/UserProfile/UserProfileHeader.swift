@@ -11,37 +11,118 @@ import UIKit
 
 class UserProfileHeader: UICollectionViewCell {
     
+    var user: User? {
+        didSet {
+            setupProfileImage()
+            usernameLabel.text = user?.username
+        }
+    }
+    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
         return iv
+    }()
+    
+    let gridButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
+        return button
+    }()
+    
+    let listButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
+        return button
+    }()
+    
+    let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "username"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
+    let postsLabel: UILabel = {
+        let label = UILabel()
+        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+        
+        attributedText.append(NSAttributedString(string: "posts", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        
+        label.attributedText = attributedText
+        
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    let editProfileButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Edit Profile", for: .normal)
+        return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        backgroundColor = .blue
         
         addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
         profileImageView.layer.cornerRadius = 80 / 2
         profileImageView.clipsToBounds = true
         
-        setupProfileImage()
+        setupBottomToolBar()
+        
+        addSubview(usernameLabel)
+        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: gridButton.topAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        
+        
+        
     }
     
-    var user: User? {
-        didSet {
-            
-        }
+    
+    
+    fileprivate func setupBottomToolBar() {
+        
+        let topDividerView = UIView()
+        topDividerView.backgroundColor = UIColor.lightGray
+        
+        let bottomDividerView = UIView()
+        bottomDividerView.backgroundColor = UIColor.lightGray
+        
+        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton])
+        
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
+        addSubview(stackView)
+        addSubview(topDividerView)
+        addSubview(bottomDividerView)
+        
+        stackView.anchor(top: nil, left: leftAnchor, bottom: self.bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        
+        topDividerView.anchor(top: stackView.topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        
+        bottomDividerView.anchor(top: stackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     fileprivate func setupProfileImage() {
         
+        guard let profileImageUrl = user?.profileImageUrl else { return }
+        guard let url = URL(string: profileImageUrl) else { return }
         
-        
-        let url = URL(string: String)
-        URLSession.shared.dataTask(with: <#T##URL#>)
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            if let err = err {
+                print("Failed to fetch profile image: ", err)
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.async {
+                self.profileImageView.image = image
+            }
+        }.resume()
     }
     
     required init?(coder aDecoder: NSCoder) {

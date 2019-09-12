@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 class UserPorfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    let cellId = "cellId"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,12 +22,34 @@ class UserPorfileController: UICollectionViewController, UICollectionViewDelegat
         fetchUser()
         
         collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
+        
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        cell.backgroundColor = .purple
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
         
         header.user = self.user
+        
         return header
     }
     
@@ -47,7 +71,7 @@ class UserPorfileController: UICollectionViewController, UICollectionViewDelegat
             
             self.user = User(dictionary: dictionary)
             
-            self.navigationItem.title = user.username
+            self.navigationItem.title = self.user?.username
             
             self.collectionView.reloadData()
             
