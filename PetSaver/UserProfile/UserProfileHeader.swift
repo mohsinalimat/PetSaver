@@ -58,6 +58,11 @@ class UserProfileHeader: UICollectionViewCell {
     let editProfileButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Edit Profile", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 3
         return button
     }()
     
@@ -74,11 +79,20 @@ class UserProfileHeader: UICollectionViewCell {
         addSubview(usernameLabel)
         usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: gridButton.topAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         
+        setupUserStatsView()
         
+        addSubview(editProfileButton)
+        editProfileButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 34)
         
     }
     
-    
+    fileprivate func setupUserStatsView() {
+        let stackView = UIStackView(arrangedSubviews: [postsLabel])
+        stackView.distribution = .fillEqually
+        
+        addSubview(stackView)
+        stackView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 50)
+    }
     
     fileprivate func setupBottomToolBar() {
         
