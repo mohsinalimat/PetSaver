@@ -12,13 +12,24 @@ import Firebase
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return false
+        
+        let index = viewControllers?.index(of: viewController)
+        if index == 2 {
+            let layout = UICollectionViewFlowLayout()
+            let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
+            let navController = UINavigationController(rootViewController: photoSelectorController)
+
+            present(navController, animated: true, completion: nil)
+            return false
+        }
+
+        return true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.delegate = self
+        self.delegate = self
         
         if Auth.auth().currentUser == nil {
 
@@ -43,10 +54,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let petSearchController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: PetSearchController())
         
+        let photoSelectorController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: PhotoSelectorController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         tabBar.tintColor = .black
         
-        viewControllers = [profileUserController, homeNavController, petSearchController]
+        viewControllers = [profileUserController,
+                           homeNavController,
+                           photoSelectorController,
+                           petSearchController]
         
         guard let items = tabBar.items else { return }
         
