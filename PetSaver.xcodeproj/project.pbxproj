@@ -14,6 +14,8 @@
 		0E1B72E4232A9E2100CFA7A9 /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72E3232A9E2100CFA7A9 /* PhotoSelectorController.swift */; };
 		0E1B72E6232AA58600CFA7A9 /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72E5232AA58600CFA7A9 /* PhotoSelectorHeader.swift */; };
 		0E1B72E8232E347600CFA7A9 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72E7232E347600CFA7A9 /* SharePhotoController.swift */; };
+		0E1B72EB232E53AC00CFA7A9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72EA232E53AC00CFA7A9 /* Post.swift */; };
+		0E1B72ED232E54BF00CFA7A9 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72EC232E54BF00CFA7A9 /* UserProfilePhotoCell.swift */; };
 		0E202D60232574DD00A0338C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E202D5F232574DD00A0338C /* AppDelegate.swift */; };
 		0E202D65232574DD00A0338C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E202D63232574DD00A0338C /* Main.storyboard */; };
 		0E202D67232574DE00A0338C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E202D66232574DE00A0338C /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 		0E1B72E3232A9E2100CFA7A9 /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		0E1B72E5232AA58600CFA7A9 /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		0E1B72E7232E347600CFA7A9 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
+		0E1B72EA232E53AC00CFA7A9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		0E1B72EC232E54BF00CFA7A9 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
 		0E202D5C232574DD00A0338C /* PetSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E202D5F232574DD00A0338C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E202D64232574DD00A0338C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			children = (
 				0E1B72D9232A34C600CFA7A9 /* UserProfileController.swift */,
 				0E1B72DC232A3C4000CFA7A9 /* UserProfileHeader.swift */,
+				0E1B72EC232E54BF00CFA7A9 /* UserProfilePhotoCell.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -84,6 +89,14 @@
 				0E1B72E7232E347600CFA7A9 /* SharePhotoController.swift */,
 			);
 			path = AddPhoto;
+			sourceTree = "<group>";
+		};
+		0E1B72E9232E538900CFA7A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E1B72EA232E53AC00CFA7A9 /* Post.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0E202D53232574DD00A0338C = {
@@ -107,6 +120,7 @@
 		0E202D5E232574DD00A0338C /* PetSaver */ = {
 			isa = PBXGroup;
 			children = (
+				0E1B72E9232E538900CFA7A9 /* Models */,
 				0E1B72E0232A9C4600CFA7A9 /* AddPhoto */,
 				0E1B72DB232A3C2100CFA7A9 /* UserProfile */,
 				0EC1A4A0232778EF00AF895D /* Search */,
@@ -311,11 +325,13 @@
 				0E1B72DD232A3C4000CFA7A9 /* UserProfileHeader.swift in Sources */,
 				0E7B86FD2326A3BC00511FD4 /* MainTabBarController.swift in Sources */,
 				0E202D60232574DD00A0338C /* AppDelegate.swift in Sources */,
+				0E1B72EB232E53AC00CFA7A9 /* Post.swift in Sources */,
 				0E7B87002326A77900511FD4 /* HomeController.swift in Sources */,
 				0E1B72E6232AA58600CFA7A9 /* PhotoSelectorHeader.swift in Sources */,
 				0E7B87042326AE9600511FD4 /* SignUpController.swift in Sources */,
 				0EC1A4A22327790700AF895D /* PetSearchController.swift in Sources */,
 				0E1B72DF232A46D500CFA7A9 /* CustomImageView.swift in Sources */,
+				0E1B72ED232E54BF00CFA7A9 /* UserProfilePhotoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
