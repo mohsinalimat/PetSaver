@@ -115,7 +115,7 @@ class CommentsController: UICollectionViewController, UICollectionViewDelegateFl
                 return
             }
             print("successfully inserted comment")
-            self.containerView.clearCommentTextField()
+            self.containerView.clearcommentTextView()
         }
     }
     

@@ -27,6 +27,7 @@
 		0E1B7300233243FA00CFA7A9 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72FF233243FA00CFA7A9 /* CommentCell.swift */; };
 		0E1B73022332465D00CFA7A9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B73012332465D00CFA7A9 /* Comment.swift */; };
 		0E1B73042333E82E00CFA7A9 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B73032333E82E00CFA7A9 /* CommentInputAccessoryView.swift */; };
+		0E1B73062334180900CFA7A9 /* CommentInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B73052334180900CFA7A9 /* CommentInputTextView.swift */; };
 		0E202D60232574DD00A0338C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E202D5F232574DD00A0338C /* AppDelegate.swift */; };
 		0E202D65232574DD00A0338C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E202D63232574DD00A0338C /* Main.storyboard */; };
 		0E202D67232574DE00A0338C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E202D66232574DE00A0338C /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		0E1B72FF233243FA00CFA7A9 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		0E1B73012332465D00CFA7A9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0E1B73032333E82E00CFA7A9 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
+		0E1B73052334180900CFA7A9 /* CommentInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputTextView.swift; sourceTree = "<group>"; };
 		0E202D5C232574DD00A0338C /* PetSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E202D5F232574DD00A0338C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E202D64232574DD00A0338C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				0E1B72FD23313E5F00CFA7A9 /* CommentsController.swift */,
 				0E1B72FF233243FA00CFA7A9 /* CommentCell.swift */,
 				0E1B73032333E82E00CFA7A9 /* CommentInputAccessoryView.swift */,
+				0E1B73052334180900CFA7A9 /* CommentInputTextView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				0E7B87042326AE9600511FD4 /* SignUpController.swift in Sources */,
 				0E1B73022332465D00CFA7A9 /* Comment.swift in Sources */,
 				0E1B72F1232E90AB00CFA7A9 /* User.swift in Sources */,
+				0E1B73062334180900CFA7A9 /* CommentInputTextView.swift in Sources */,
 				0EC1A4A22327790700AF895D /* PetSearchController.swift in Sources */,
 				0E1B72DF232A46D500CFA7A9 /* CustomImageView.swift in Sources */,
 				0E1B72ED232E54BF00CFA7A9 /* UserProfilePhotoCell.swift in Sources */,
