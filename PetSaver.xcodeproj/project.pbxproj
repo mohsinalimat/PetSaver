@@ -24,6 +24,8 @@
 		0E1B72FA232FF17200CFA7A9 /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72F9232FF17200CFA7A9 /* CustomAnimationPresentor.swift */; };
 		0E1B72FC232FF55000CFA7A9 /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72FB232FF55000CFA7A9 /* CustomAnimationDismisser.swift */; };
 		0E1B72FE23313E5F00CFA7A9 /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72FD23313E5F00CFA7A9 /* CommentsController.swift */; };
+		0E1B7300233243FA00CFA7A9 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B72FF233243FA00CFA7A9 /* CommentCell.swift */; };
+		0E1B73022332465D00CFA7A9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B73012332465D00CFA7A9 /* Comment.swift */; };
 		0E202D60232574DD00A0338C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E202D5F232574DD00A0338C /* AppDelegate.swift */; };
 		0E202D65232574DD00A0338C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E202D63232574DD00A0338C /* Main.storyboard */; };
 		0E202D67232574DE00A0338C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E202D66232574DE00A0338C /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		0E1B72F9232FF17200CFA7A9 /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
 		0E1B72FB232FF55000CFA7A9 /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		0E1B72FD23313E5F00CFA7A9 /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
+		0E1B72FF233243FA00CFA7A9 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		0E1B73012332465D00CFA7A9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0E202D5C232574DD00A0338C /* PetSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E202D5F232574DD00A0338C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E202D64232574DD00A0338C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			children = (
 				0E1B72EA232E53AC00CFA7A9 /* Post.swift */,
 				0E1B72F0232E90AB00CFA7A9 /* User.swift */,
+				0E1B73012332465D00CFA7A9 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				0E7B86FF2326A77900511FD4 /* HomeController.swift */,
 				0E1B72EE232E664000CFA7A9 /* HomePostCell.swift */,
 				0E1B72FD23313E5F00CFA7A9 /* CommentsController.swift */,
+				0E1B72FF233243FA00CFA7A9 /* CommentCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -353,6 +359,7 @@
 				0E1B72EF232E664000CFA7A9 /* HomePostCell.swift in Sources */,
 				0E1B72F8232FE4A800CFA7A9 /* PreviewPhotoContainerView.swift in Sources */,
 				0E7B87022326A7C600511FD4 /* LoginController.swift in Sources */,
+				0E1B7300233243FA00CFA7A9 /* CommentCell.swift in Sources */,
 				0E1B72FE23313E5F00CFA7A9 /* CommentsController.swift in Sources */,
 				0E7B86FB2326A16500511FD4 /* Extensions.swift in Sources */,
 				0E1B72E4232A9E2100CFA7A9 /* PhotoSelectorController.swift in Sources */,
@@ -368,6 +375,7 @@
 				0E1B72F6232FCE3700CFA7A9 /* CameraController.swift in Sources */,
 				0E1B72FC232FF55000CFA7A9 /* CustomAnimationDismisser.swift in Sources */,
 				0E7B87042326AE9600511FD4 /* SignUpController.swift in Sources */,
+				0E1B73022332465D00CFA7A9 /* Comment.swift in Sources */,
 				0E1B72F1232E90AB00CFA7A9 /* User.swift in Sources */,
 				0EC1A4A22327790700AF895D /* PetSearchController.swift in Sources */,
 				0E1B72DF232A46D500CFA7A9 /* CustomImageView.swift in Sources */,
