@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 
 protocol UserProfileHeaderDelegate {
@@ -14,7 +15,7 @@ protocol UserProfileHeaderDelegate {
     func didChangetoGridView()
 }
 
-class UserProfileHeader: UICollectionViewCell {
+class UserProfileHeader: UICollectionViewCell, CLLocationManagerDelegate {
     
     var delegate: UserProfileHeaderDelegate?
     
@@ -25,6 +26,8 @@ class UserProfileHeader: UICollectionViewCell {
             usernameLabel.text = user?.username
         }
     }
+    
+    let locationManager = CLLocationManager()
     
     let profileImageView: CustomImageView = {
         let iv = CustomImageView()
@@ -61,6 +64,13 @@ class UserProfileHeader: UICollectionViewCell {
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.text = "username"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
+    let locationLabel: UILabel = {
+        let label = UILabel()
+        label.text = "current location"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -102,12 +112,27 @@ class UserProfileHeader: UICollectionViewCell {
         addSubview(usernameLabel)
         usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: gridButton.topAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         
+        
         setupUserStatsView()
         
         addSubview(editProfileButton)
         editProfileButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 34)
         
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    }
+    
     
     fileprivate func setupUserStatsView() {
         let stackView = UIStackView(arrangedSubviews: [postsLabel])
