@@ -11,8 +11,6 @@ import Firebase
 
 class LoginController: UIViewController {
     
-    
-    
     let emailTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
@@ -78,8 +76,7 @@ class LoginController: UIViewController {
                 print("Failed to sign in with email: ", err)
                 return
             }
-            
-            //print("Successfully logged back in with user: ", )
+           
             guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
             
             mainTabBarController.setupViewControllers()
@@ -107,7 +104,6 @@ class LoginController: UIViewController {
         let signUpController = SignUpController()
         self.navigationController?.pushViewController(signUpController, animated: true)
         
-        print("123")
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -117,19 +117,24 @@ class UserProfileHeader: UICollectionViewCell, CLLocationManagerDelegate {
         profileImageView.layer.cornerRadius = 80 / 2
         profileImageView.clipsToBounds = true
         
+        
+        
         setupBottomToolBar()
         
         addSubview(usernameLabel)
-        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: gridButton.topAnchor, right: nil, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
         
-        
+        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: nil, bottom: gridButton.topAnchor, right: nil, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
+        usernameLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
         setupUserStatsView()
         
 //        addSubview(editProfileButton)
 //        editProfileButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 0, height: 34)
         
-//        addSubview(locationLabel)
-//        locationLabel.anchor(top: postsLabel.bottomAnchor, left: usernameLabel.rightAnchor, bottom: gridButton.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 12, width: 200, height: 30)
+        let verticalDivider = UIView()
+        verticalDivider.backgroundColor = UIColor.lightGray
+        
+        addSubview(verticalDivider)
+        verticalDivider.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: gridButton.topAnchor, right: postsLabel.leftAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0.5, height: 0)
         
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -148,20 +153,16 @@ class UserProfileHeader: UICollectionViewCell, CLLocationManagerDelegate {
 
         fetchCityAndCountry(from: location) { city, country, error in
             guard let city = city, let country = country, error == nil else { return }
-//            let locationString = city + ", " + country
             
            let attributedText = NSMutableAttributedString(string: "\(city)\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
            
            attributedText.append(NSAttributedString(string: "current location", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
           
             self.locationLabel.attributedText = attributedText
-            
-            print(city + ", " + country)
+            [self.locationManager .stopUpdatingLocation()]
         }
         
-       
     }
-    
     
     func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ country:  String?, _ error: Error?) -> ()) {
         CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
@@ -172,6 +173,7 @@ class UserProfileHeader: UICollectionViewCell, CLLocationManagerDelegate {
         }
     }
     
+    
     fileprivate func setupUserStatsView() {
         let stackView = UIStackView(arrangedSubviews: [postsLabel, locationLabel])
         stackView.distribution = .fillEqually
@@ -179,6 +181,7 @@ class UserProfileHeader: UICollectionViewCell, CLLocationManagerDelegate {
         addSubview(stackView)
         stackView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 24, width: 0, height: 100)
     }
+    
     
     fileprivate func setupBottomToolBar() {
         

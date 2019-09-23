@@ -89,10 +89,6 @@ class UserPorfileController: UICollectionViewController, UICollectionViewDelegat
 
             })
             
-//            self.posts.forEach({ (post) in
-//                print(post.id ?? "")
-//            })
-//
             self.collectionView.reloadData()
             
         }) { (err) in
