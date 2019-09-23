@@ -184,7 +184,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     
     @objc func handleAlreadyHaveAnAccount() {
         _ = navigationController?.popViewController(animated: true)
-        print(navigationController)
+       // print(navigationController)
     }
     
     override func viewDidLoad() {
