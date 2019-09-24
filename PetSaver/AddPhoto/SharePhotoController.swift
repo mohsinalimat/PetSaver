@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 import MapKit
 
-public var currentLocation: CLLocationCoordinate2D?
 
 class SharePhotoController: UIViewController {
     
     private let locationManager = CLLocationManager()
-    
+    private var currentLocation: CLLocationCoordinate2D?
+
     
     var selectedImage: UIImage? {
         didSet {
@@ -27,6 +27,7 @@ class SharePhotoController: UIViewController {
         super.viewDidLoad()
         
         configureLocationServices()
+     
        
         view.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(handleShare))

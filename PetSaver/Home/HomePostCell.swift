@@ -10,14 +10,19 @@ import UIKit
 import CoreLocation
 import MapKit
 
+public var currentLocation: CLLocationCoordinate2D?
+
 protocol HomePostCellDelegate {
     func didTapComment(post: Post)
 }
 
-
 class HomePostCell: UICollectionViewCell {
    
+    private let locationManager = CLLocationManager()
+    
     var delegate: HomePostCellDelegate?
+    
+    
     
     var post: Post? {
         didSet {
@@ -27,13 +32,17 @@ class HomePostCell: UICollectionViewCell {
             usernameLabel.text = post?.user.username
             
             let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(post?.latitude ?? 0, post?.longitude ?? 0)
-            
-            let curLocation = MKMapPoint.init(currentLocation!)
+                  
+            print(locationManager.location)
             let petLocation = MKMapPoint.init(coordinate)
+           // let curLocation = MKMapPoint.init(currentLocation!)
+         
             
-            let distance = curLocation.distance(to: petLocation)
-            
-           print(distance)
+                   
+//            let distance = curLocation.distance(to: petLocation)
+                   
+//            print(distance)
+                  
 
             
             guard let profileImage = post?.user.profileImageUrl else { return }
@@ -125,6 +134,8 @@ class HomePostCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+      configureLocationServices()
+    
         addSubview(photoImageView)
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
@@ -163,4 +174,33 @@ class HomePostCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    fileprivate func configureLocationServices() {
+        locationManager.delegate = self
+        
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
 }
+
+extension HomePostCell: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let latestLocation = locations.first else { return }
+        currentLocation = latestLocation.coordinate
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+}
+
