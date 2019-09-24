@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 protocol HomePostCellDelegate {
     func didTapComment(post: Post)
@@ -23,6 +25,16 @@ class HomePostCell: UICollectionViewCell {
             photoImageView.loadImage(urlString: postImageUrl)
             
             usernameLabel.text = post?.user.username
+            
+            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(post?.latitude ?? 0, post?.longitude ?? 0)
+            
+            let curLocation = MKMapPoint.init(currentLocation!)
+            let petLocation = MKMapPoint.init(coordinate)
+            
+            let distance = curLocation.distance(to: petLocation)
+            
+           print(distance)
+
             
             guard let profileImage = post?.user.profileImageUrl else { return }
             userProfileImageView.loadImage(urlString: profileImage)
@@ -45,6 +57,8 @@ class HomePostCell: UICollectionViewCell {
         
         self.captionLabel.attributedText = attributedText
     }
+    
+    
     
     let userProfileImageView: CustomImageView = {
         let iv = CustomImageView()
@@ -82,7 +96,7 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
-    let locationLabel: UILabel = {
+    let distanceLabel: UILabel = {
        let label = UILabel()
         label.text = "location"
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -115,7 +129,7 @@ class HomePostCell: UICollectionViewCell {
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
         addSubview(optionsButton)
-        addSubview(locationLabel)
+        addSubview(distanceLabel)
         
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         userProfileImageView.layer.cornerRadius = 40 / 2
@@ -129,9 +143,9 @@ class HomePostCell: UICollectionViewCell {
         
         setupActionButtons()
         
-        addSubview(locationLabel)
-        locationLabel.anchor(top: photoImageView.bottomAnchor, left: sendMessageButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 100, height: 0)
-        locationLabel.centerYAnchor.constraint(equalTo: sendMessageButton.centerYAnchor).isActive = true
+        addSubview(distanceLabel)
+        distanceLabel.anchor(top: photoImageView.bottomAnchor, left: sendMessageButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 100, height: 0)
+        distanceLabel.centerYAnchor.constraint(equalTo: sendMessageButton.centerYAnchor).isActive = true
 
         addSubview(captionLabel)
         captionLabel.anchor(top: commentButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)

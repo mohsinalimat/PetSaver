@@ -17,8 +17,10 @@ struct Post {
     let imageUrl: String
     let caption: String
     let creationDate: Date
-       
     
+    let longitude: Double
+    let latitude: Double
+        
     init(user: User, dictionary: [String: Any]) {
         self.user = user
         self.imageUrl = dictionary["imageUrl"] as? String ?? ""
@@ -26,6 +28,8 @@ struct Post {
         
         let secondsFrom1970 = dictionary["creationDate"] as? Double ?? 0
         self.creationDate = Date(timeIntervalSince1970: secondsFrom1970)
-      
+        
+        self.longitude = dictionary["longitude"] as? Double ?? 0
+        self.latitude = dictionary["latitude"] as? Double ?? 0
     }
 }

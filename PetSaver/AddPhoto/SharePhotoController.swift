@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 import MapKit
 
+public var currentLocation: CLLocationCoordinate2D?
+
 class SharePhotoController: UIViewController {
     
     private let locationManager = CLLocationManager()
-    private var currentLocation: CLLocationCoordinate2D?
+    
     
     var selectedImage: UIImage? {
         didSet {
