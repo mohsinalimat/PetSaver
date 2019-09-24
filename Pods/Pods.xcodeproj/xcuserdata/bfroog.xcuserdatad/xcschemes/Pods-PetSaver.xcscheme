@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9BE6A5FBDB3CF7306C0428D8DFCCE103"
+               BlueprintIdentifier = "BEEBC34524BE709F42E1A9A01E428EBA"
                BuildableName = "Pods_PetSaver.framework"
                BlueprintName = "Pods-PetSaver"
                ReferencedContainer = "container:Pods.xcodeproj">

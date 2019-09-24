@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import Agrume
+
 
 class UserPorfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UserProfileHeaderDelegate {
     
@@ -216,5 +218,14 @@ class UserPorfileController: UICollectionViewController, UICollectionViewDelegat
             self.paginatePosts()
         }
     }
+    
+        
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+                
+        guard let imageUrl = URL(string: posts[indexPath.item].imageUrl) else { return }
+        let imageView = Agrume(url: imageUrl)
+        imageView.show(from: self)
+    }
+    
 }
 

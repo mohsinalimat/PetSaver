@@ -38,6 +38,7 @@
 		0E7B87022326A7C600511FD4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B87012326A7C600511FD4 /* LoginController.swift */; };
 		0E7B87042326AE9600511FD4 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B87032326AE9600511FD4 /* SignUpController.swift */; };
 		0E7B87062326BDEA00511FD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */; };
+		0EB90DD2233A03AD00B70C9E /* ImageFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DD1233A03AD00B70C9E /* ImageFullScreenController.swift */; };
 		0EC1A4A22327790700AF895D /* PetSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC1A4A12327790700AF895D /* PetSearchController.swift */; };
 		26FD1B9AD00F087A356FA839 /* Pods_PetSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		0E7B87012326A7C600511FD4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0E7B87032326AE9600511FD4 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0EB90DD1233A03AD00B70C9E /* ImageFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFullScreenController.swift; sourceTree = "<group>"; };
 		0EC1A4A12327790700AF895D /* PetSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSearchController.swift; sourceTree = "<group>"; };
 		159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetSaver.release.xcconfig"; path = "Target Support Files/Pods-PetSaver/Pods-PetSaver.release.xcconfig"; sourceTree = "<group>"; };
 		1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetSaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				0E1B72D9232A34C600CFA7A9 /* UserProfileController.swift */,
 				0E1B72DC232A3C4000CFA7A9 /* UserProfileHeader.swift */,
 				0E1B72EC232E54BF00CFA7A9 /* UserProfilePhotoCell.swift */,
+				0EB90DD1233A03AD00B70C9E /* ImageFullScreenController.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -312,8 +315,10 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PetSaver/Pods-PetSaver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Agrume/Agrume.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -321,8 +326,10 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Agrume.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -363,6 +370,7 @@
 				0E1B72FA232FF17200CFA7A9 /* CustomAnimationPresentor.swift in Sources */,
 				0E1B72E2232A9C6E00CFA7A9 /* PhotoSelectorCell.swift in Sources */,
 				0E1B72EF232E664000CFA7A9 /* HomePostCell.swift in Sources */,
+				0EB90DD2233A03AD00B70C9E /* ImageFullScreenController.swift in Sources */,
 				0E1B72F8232FE4A800CFA7A9 /* PreviewPhotoContainerView.swift in Sources */,
 				0E1B73042333E82E00CFA7A9 /* CommentInputAccessoryView.swift in Sources */,
 				0E7B87022326A7C600511FD4 /* LoginController.swift in Sources */,

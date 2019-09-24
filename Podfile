@@ -13,5 +13,7 @@ target 'PetSaver' do
   pod 'Firebase/Database'
   pod 'Firebase/Analytics'
 
+  pod 'Agrume'
+
 
 end
