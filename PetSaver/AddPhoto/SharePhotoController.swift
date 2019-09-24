@@ -8,8 +8,12 @@
 
 import UIKit
 import Firebase
+import MapKit
 
 class SharePhotoController: UIViewController {
+    
+    private let locationManager = CLLocationManager()
+    private var currentLocation: CLLocationCoordinate2D?
     
     var selectedImage: UIImage? {
         didSet {
@@ -20,10 +24,15 @@ class SharePhotoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureLocationServices()
+       
+       
+        
         view.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(handleShare))
         
         setupImageAndTextViews()
+        
     }
     
     let imageView: UIImageView = {
@@ -40,10 +49,18 @@ class SharePhotoController: UIViewController {
         return tv
     }()
     
+    let mapView: MKMapView = {
+        let mv = MKMapView()
+        mv.layer.cornerRadius = 10
+        return mv
+    }()
+    
     fileprivate func setupImageAndTextViews() {
-        let containerView = UIView()
-        containerView.backgroundColor = .white
         
+        let containerView = UIView()
+        
+        containerView.backgroundColor = .white
+        view.backgroundColor = .white
         view.addSubview(containerView)
         containerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 100)
         
@@ -52,6 +69,34 @@ class SharePhotoController: UIViewController {
         
         containerView.addSubview(textView)
         textView.anchor(top: containerView.topAnchor, left: imageView.rightAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 4, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        view.addSubview(mapView)
+               mapView.anchor(top: containerView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 0)
+        
+        
+    }
+    
+    fileprivate func configureLocationServices() {
+        locationManager.delegate = self
+        
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        } else if status == .authorizedWhenInUse {
+            beginLocationsUpdates(locationManager: locationManager)
+        }
+    }
+    
+    fileprivate func beginLocationsUpdates(locationManager: CLLocationManager) {
+        mapView.showsUserLocation = true
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+    }
+    
+    fileprivate func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D) {
+        let region = MKCoordinateRegion.init(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: true)
     }
     
     @objc func handleShare() {
@@ -116,4 +161,19 @@ class SharePhotoController: UIViewController {
         return true
     }
     
+}
+
+extension SharePhotoController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let latestLocation = locations.first else { return }
+        currentLocation = latestLocation.coordinate
+        
+        zoomToLatestLocation(with: latestLocation.coordinate)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            beginLocationsUpdates(locationManager: manager)
+        }
+    }
 }
