@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct Post {
     
@@ -16,7 +17,8 @@ struct Post {
     let imageUrl: String
     let caption: String
     let creationDate: Date
-        
+       
+    
     init(user: User, dictionary: [String: Any]) {
         self.user = user
         self.imageUrl = dictionary["imageUrl"] as? String ?? ""
@@ -24,5 +26,6 @@ struct Post {
         
         let secondsFrom1970 = dictionary["creationDate"] as? Double ?? 0
         self.creationDate = Date(timeIntervalSince1970: secondsFrom1970)
+      
     }
 }

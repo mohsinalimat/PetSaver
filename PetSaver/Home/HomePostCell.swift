@@ -36,11 +36,12 @@ class HomePostCell: UICollectionViewCell {
         
         let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         
-        attributedText.append(NSAttributedString(string: "\(post.caption)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: " \(post.caption)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 4)]))
-        
-        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+                
+        let timeAgoDisplay = post.creationDate.timeAgoDisplay()
+        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.gray]))
         
         self.captionLabel.attributedText = attributedText
     }
@@ -81,6 +82,13 @@ class HomePostCell: UICollectionViewCell {
         return button
     }()
     
+    let locationLabel: UILabel = {
+       let label = UILabel()
+        label.text = "location"
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        return label
+    }()
+    
     @objc func handleComment() {
         print("commenting")
         guard let post = post else { return }
@@ -107,6 +115,7 @@ class HomePostCell: UICollectionViewCell {
         addSubview(userProfileImageView)
         addSubview(usernameLabel)
         addSubview(optionsButton)
+        addSubview(locationLabel)
         
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 0, width: 40, height: 40)
         userProfileImageView.layer.cornerRadius = 40 / 2
@@ -120,8 +129,13 @@ class HomePostCell: UICollectionViewCell {
         
         setupActionButtons()
         
+        addSubview(locationLabel)
+        locationLabel.anchor(top: photoImageView.bottomAnchor, left: sendMessageButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 100, height: 0)
+        locationLabel.centerYAnchor.constraint(equalTo: sendMessageButton.centerYAnchor).isActive = true
+
         addSubview(captionLabel)
         captionLabel.anchor(top: commentButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+        
     }
     
     fileprivate func setupActionButtons() {

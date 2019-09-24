@@ -26,8 +26,6 @@ class SharePhotoController: UIViewController {
         
         configureLocationServices()
        
-       
-        
         view.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(handleShare))
         
@@ -141,7 +139,12 @@ class SharePhotoController: UIViewController {
         
         let userPostRef = Database.database().reference().child("posts").child(uid)
         let ref = userPostRef.childByAutoId()
-        let values = ["imageUrl" : imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970] as [String: Any]
+        
+        guard let longitude = currentLocation?.longitude else { return }
+        guard let latitude = currentLocation?.latitude else { return }
+
+        
+        let values = ["imageUrl" : imageUrl, "caption": caption, "imageWidth": postImage.size.width, "imageHeight": postImage.size.height, "creationDate": Date().timeIntervalSince1970, "longitude": longitude, "latitude": latitude] as [String: Any]
         
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {

@@ -39,6 +39,7 @@
 		0E7B87042326AE9600511FD4 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B87032326AE9600511FD4 /* SignUpController.swift */; };
 		0E7B87062326BDEA00511FD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */; };
 		0EB90DD2233A03AD00B70C9E /* ImageFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DD1233A03AD00B70C9E /* ImageFullScreenController.swift */; };
+		0EB90DD4233A5E4000B70C9E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DD3233A5E4000B70C9E /* Location.swift */; };
 		0EC1A4A22327790700AF895D /* PetSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC1A4A12327790700AF895D /* PetSearchController.swift */; };
 		26FD1B9AD00F087A356FA839 /* Pods_PetSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		0E7B87032326AE9600511FD4 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EB90DD1233A03AD00B70C9E /* ImageFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFullScreenController.swift; sourceTree = "<group>"; };
+		0EB90DD3233A5E4000B70C9E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		0EC1A4A12327790700AF895D /* PetSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSearchController.swift; sourceTree = "<group>"; };
 		159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetSaver.release.xcconfig"; path = "Target Support Files/Pods-PetSaver/Pods-PetSaver.release.xcconfig"; sourceTree = "<group>"; };
 		1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetSaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				0E1B72EA232E53AC00CFA7A9 /* Post.swift */,
 				0E1B72F0232E90AB00CFA7A9 /* User.swift */,
 				0E1B73012332465D00CFA7A9 /* Comment.swift */,
+				0EB90DD3233A5E4000B70C9E /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				0E1B72E6232AA58600CFA7A9 /* PhotoSelectorHeader.swift in Sources */,
 				0E1B72F6232FCE3700CFA7A9 /* CameraController.swift in Sources */,
 				0E1B72FC232FF55000CFA7A9 /* CustomAnimationDismisser.swift in Sources */,
+				0EB90DD4233A5E4000B70C9E /* Location.swift in Sources */,
 				0E7B87042326AE9600511FD4 /* SignUpController.swift in Sources */,
 				0E1B73022332465D00CFA7A9 /* Comment.swift in Sources */,
 				0E1B72F1232E90AB00CFA7A9 /* User.swift in Sources */,
