@@ -52,16 +52,17 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
        let profileUserController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profile_unselected"), selectedImage: #imageLiteral(resourceName: "profile_selected"), rootViewController: UserPorfileController(collectionViewLayout: UICollectionViewFlowLayout()))
         
-        let petSearchController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: PetSearchController())
+        let searchController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), rootViewController: UserSearchController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         let photoSelectorController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), rootViewController: PhotoSelectorController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         tabBar.tintColor = .black
         
-        viewControllers = [homeNavController,
+        viewControllers = [searchController,
+                           homeNavController,
                            profileUserController,
                            photoSelectorController,
-                           petSearchController]
+                           ]
         
         guard let items = tabBar.items else { return }
         

@@ -40,7 +40,8 @@
 		0E7B87062326BDEA00511FD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */; };
 		0EB90DD2233A03AD00B70C9E /* ImageFullScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DD1233A03AD00B70C9E /* ImageFullScreenController.swift */; };
 		0EB90DD4233A5E4000B70C9E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DD3233A5E4000B70C9E /* Location.swift */; };
-		0EC1A4A22327790700AF895D /* PetSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC1A4A12327790700AF895D /* PetSearchController.swift */; };
+		0EB90DD6233BB78F00B70C9E /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DD5233BB78F00B70C9E /* UserSearchCell.swift */; };
+		0EC1A4A22327790700AF895D /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC1A4A12327790700AF895D /* UserSearchController.swift */; };
 		26FD1B9AD00F087A356FA839 /* Pods_PetSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +81,8 @@
 		0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0EB90DD1233A03AD00B70C9E /* ImageFullScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFullScreenController.swift; sourceTree = "<group>"; };
 		0EB90DD3233A5E4000B70C9E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		0EC1A4A12327790700AF895D /* PetSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSearchController.swift; sourceTree = "<group>"; };
+		0EB90DD5233BB78F00B70C9E /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
+		0EC1A4A12327790700AF895D /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
 		159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetSaver.release.xcconfig"; path = "Target Support Files/Pods-PetSaver/Pods-PetSaver.release.xcconfig"; sourceTree = "<group>"; };
 		1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetSaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D26CE3AC1D997236AECA954F /* Pods-PetSaver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetSaver.debug.xcconfig"; path = "Target Support Files/Pods-PetSaver/Pods-PetSaver.debug.xcconfig"; sourceTree = "<group>"; };
@@ -217,7 +219,8 @@
 		0EC1A4A0232778EF00AF895D /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				0EC1A4A12327790700AF895D /* PetSearchController.swift */,
+				0EC1A4A12327790700AF895D /* UserSearchController.swift */,
+				0EB90DD5233BB78F00B70C9E /* UserSearchCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				0EB90DD2233A03AD00B70C9E /* ImageFullScreenController.swift in Sources */,
 				0E1B72F8232FE4A800CFA7A9 /* PreviewPhotoContainerView.swift in Sources */,
 				0E1B73042333E82E00CFA7A9 /* CommentInputAccessoryView.swift in Sources */,
+				0EB90DD6233BB78F00B70C9E /* UserSearchCell.swift in Sources */,
 				0E7B87022326A7C600511FD4 /* LoginController.swift in Sources */,
 				0E1B7300233243FA00CFA7A9 /* CommentCell.swift in Sources */,
 				0E1B72FE23313E5F00CFA7A9 /* CommentsController.swift in Sources */,
@@ -397,7 +401,7 @@
 				0E1B73022332465D00CFA7A9 /* Comment.swift in Sources */,
 				0E1B72F1232E90AB00CFA7A9 /* User.swift in Sources */,
 				0E1B73062334180900CFA7A9 /* CommentInputTextView.swift in Sources */,
-				0EC1A4A22327790700AF895D /* PetSearchController.swift in Sources */,
+				0EC1A4A22327790700AF895D /* UserSearchController.swift in Sources */,
 				0E1B72DF232A46D500CFA7A9 /* CustomImageView.swift in Sources */,
 				0E1B72ED232E54BF00CFA7A9 /* UserProfilePhotoCell.swift in Sources */,
 			);
