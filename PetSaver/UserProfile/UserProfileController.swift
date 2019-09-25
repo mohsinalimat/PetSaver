@@ -11,7 +11,7 @@ import Firebase
 import Agrume
 
 
-class UserPorfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UserProfileHeaderDelegate {
+class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UserProfileHeaderDelegate {
     
     var isGridView = true
     
@@ -35,8 +35,6 @@ class UserPorfileController: UICollectionViewController, UICollectionViewDelegat
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
-        
-        navigationItem.title = Auth.auth().currentUser?.uid
         
         fetchUser()
         
@@ -99,7 +97,7 @@ class UserPorfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     fileprivate func fetchOrderedPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = self.user?.uid else { return }
         let ref = Database.database().reference().child("posts").child(uid)
         
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
@@ -214,6 +212,8 @@ class UserPorfileController: UICollectionViewController, UICollectionViewDelegat
             self.navigationItem.title = self.user?.username
             
             self.collectionView.reloadData()
+            
+            self.fetchOrderedPosts()
             
             self.paginatePosts()
         }
