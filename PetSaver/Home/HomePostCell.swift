@@ -33,17 +33,17 @@ class HomePostCell: UICollectionViewCell {
             
             let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(post?.latitude ?? 0, post?.longitude ?? 0)
                   
-            print(locationManager.location)
-            let petLocation = MKMapPoint.init(coordinate)
-           // let curLocation = MKMapPoint.init(currentLocation!)
-         
-            
-                   
-//            let distance = curLocation.distance(to: petLocation)
-                   
-//            print(distance)
-                  
-
+            //print(locationManager.location)
+            if let curLocation: CLLocation = locationManager.location {
+                let curCoordinate: CLLocationCoordinate2D = curLocation.coordinate
+                
+                let currentLocation = MKMapPoint.init(curCoordinate)
+                
+                let petLocation = MKMapPoint.init(coordinate)
+                let distance = Int(round(currentLocation.distance(to: petLocation)))
+                print(distance)
+                distanceLabel.text = "\(distance)m from you"
+            }
             
             guard let profileImage = post?.user.profileImageUrl else { return }
             userProfileImageView.loadImage(urlString: profileImage)
