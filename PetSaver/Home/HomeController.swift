@@ -59,7 +59,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach { (key, value) in
                 self.uids.append(key)
-                print(key)
+                
             }
             
             for uid in self.uids {
@@ -68,7 +68,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 }
             }
         }) { (err) in
-            print(err)
+            print("failed to fetch all posts from all useres: ", err)
         }
        
     
@@ -101,12 +101,21 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "Logo"))
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "filter").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleFilter))
     }
     
     @objc func handleCamera() {
         let cameraController = CameraController()
         cameraController.modalPresentationStyle = .fullScreen
         present(cameraController, animated: true, completion: nil)
+    }
+    
+    @objc func handleFilter() {
+        let filterController = FilterController(collectionViewLayout: UICollectionViewFlowLayout())
+        //filterController.modalPresentationStyle = .fullScreen
+        //present(filterController, animated: true, completion: nil)
+        navigationController?.pushViewController(filterController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
