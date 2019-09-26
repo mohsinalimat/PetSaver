@@ -47,15 +47,31 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate func fetchAllPosts() {
         fetchPosts()
+        
     }
     
     var posts = [Post]()
+    var uids = [String]()
     fileprivate func fetchPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        Database.fetchUserWithUid(uid: uid) { (user) in
-            self.fetchPostsWithUser(user: user)
+           
+        let ref = Database.database().reference().child("posts")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            dictionaries.forEach { (key, value) in
+                self.uids.append(key)
+                print(key)
+            }
+            
+            for uid in self.uids {
+                Database.fetchUserWithUid(uid: uid) { (user) in
+                    self.fetchPostsWithUser(user: user)
+                }
+            }
+        }) { (err) in
+            print(err)
         }
+       
+    
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
