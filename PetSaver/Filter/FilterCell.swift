@@ -12,6 +12,11 @@ class FilterCell: UICollectionViewCell {
     
     let distanceSlider: UISlider = {
         let ds = UISlider()
+        ds.minimumValue = 1
+        ds.maximumValue = 100
+        ds.isContinuous = false
+        ds.value = 25
+                
         return ds
     }()
     

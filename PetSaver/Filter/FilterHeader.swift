@@ -10,6 +10,8 @@ import UIKit
 
 class FilterHeader: UICollectionViewCell {
     
+    var distance: Int = 10
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Search Distance:"
@@ -19,7 +21,7 @@ class FilterHeader: UICollectionViewCell {
     
     let distanceLabel: UILabel = {
         let label = UILabel()
-        label.text = "10 km"
+        label.text = "km"
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
@@ -29,6 +31,8 @@ class FilterHeader: UICollectionViewCell {
         
         addSubview(titleLabel)
         addSubview(distanceLabel)
+        
+        distanceLabel.text = "\(distance) km"
         
         titleLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         distanceLabel.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 50, width: 0, height: 0)
