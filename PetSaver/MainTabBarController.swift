@@ -58,10 +58,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         tabBar.tintColor = .black
         
-        viewControllers = [searchController,
-                           homeNavController,
+        viewControllers = [homeNavController,
                            profileUserController,
                            photoSelectorController,
+                           searchController
                            ]
         
         guard let items = tabBar.items else { return }
