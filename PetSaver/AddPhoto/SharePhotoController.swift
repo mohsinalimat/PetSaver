@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import MapKit
+import CoreML
 
 
 class SharePhotoController: UIViewController {

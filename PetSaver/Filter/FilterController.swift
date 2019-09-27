@@ -25,12 +25,12 @@ class FilterController: UICollectionViewController, UICollectionViewDelegateFlow
         collectionView.register(FilterHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 2
-//    }
-    
+    @objc func distanceSliderValueChanged() {
+        
+    }
     
     var header: FilterHeader?
+   
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! FilterHeader
@@ -40,8 +40,6 @@ class FilterController: UICollectionViewController, UICollectionViewDelegateFlow
         return header
     }
         
-    
-   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 50)
     }

@@ -16,7 +16,7 @@ class FilterCell: UICollectionViewCell {
         ds.maximumValue = 100
         ds.isContinuous = false
         ds.value = 25
-                
+        //ds.addTarget(self, action: #selector(distanceSliderValueChanged), for: .valueChanged)
         return ds
     }()
     
