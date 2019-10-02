@@ -43,6 +43,8 @@
 		0EB90DD9233D466400B70C9E /* FilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DD8233D466400B70C9E /* FilterController.swift */; };
 		0EB90DDB233E110800B70C9E /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DDA233E110800B70C9E /* FilterCell.swift */; };
 		0EB90DDD233E142A00B70C9E /* FilterHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DDC233E142A00B70C9E /* FilterHeader.swift */; };
+		0EB90DDF2344A3DA00B70C9E /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DDE2344A3DA00B70C9E /* SqueezeNet.mlmodel */; };
+		0EB90DE12344AB0300B70C9E /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0EB90DE02344AB0200B70C9E /* Resnet50.mlmodel */; };
 		0EC1A4A22327790700AF895D /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC1A4A12327790700AF895D /* UserSearchController.swift */; };
 		26FD1B9AD00F087A356FA839 /* Pods_PetSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		0EB90DD8233D466400B70C9E /* FilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterController.swift; sourceTree = "<group>"; };
 		0EB90DDA233E110800B70C9E /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		0EB90DDC233E142A00B70C9E /* FilterHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHeader.swift; sourceTree = "<group>"; };
+		0EB90DDE2344A3DA00B70C9E /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
+		0EB90DE02344AB0200B70C9E /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		0EC1A4A12327790700AF895D /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
 		159F84577CBAF6D29D0A8844 /* Pods-PetSaver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetSaver.release.xcconfig"; path = "Target Support Files/Pods-PetSaver/Pods-PetSaver.release.xcconfig"; sourceTree = "<group>"; };
 		1CF6111DDF02F1089CB8A23E /* Pods_PetSaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetSaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +188,8 @@
 				0E202D68232574DE00A0338C /* LaunchScreen.storyboard */,
 				0E202D6B232574DE00A0338C /* Info.plist */,
 				0E7B87052326BDE900511FD4 /* GoogleService-Info.plist */,
+				0EB90DE02344AB0200B70C9E /* Resnet50.mlmodel */,
+				0EB90DDE2344A3DA00B70C9E /* SqueezeNet.mlmodel */,
 			);
 			path = PetSaver;
 			sourceTree = "<group>";
@@ -387,7 +393,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB90DE12344AB0300B70C9E /* Resnet50.mlmodel in Sources */,
 				0E1B72FA232FF17200CFA7A9 /* CustomAnimationPresentor.swift in Sources */,
+				0EB90DDF2344A3DA00B70C9E /* SqueezeNet.mlmodel in Sources */,
 				0EB90DDD233E142A00B70C9E /* FilterHeader.swift in Sources */,
 				0E1B72E2232A9C6E00CFA7A9 /* PhotoSelectorCell.swift in Sources */,
 				0E1B72EF232E664000CFA7A9 /* HomePostCell.swift in Sources */,

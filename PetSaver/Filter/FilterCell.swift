@@ -20,9 +20,12 @@ class FilterCell: UICollectionViewCell {
         let ds = UISlider()
         ds.minimumValue = 1
         ds.maximumValue = 100
-        ds.isContinuous = false
+//        ds.minimumTrackTintColor = .blue
+//        ds.maximumTrackTintColor = .red
+        ds.isContinuous = true
         ds.value = 25
-        ds.addTarget(self, action: #selector(distanceSliderValueChanged(_:)), for: .valueChanged)
+        //ds.addTarget(self, action: #selector(distanceSliderValueChanged(_:)), for: .valueChanged)
+        ds.addTarget(self, action: #selector(distanceSliderValueChanged(slider:)), for: .valueChanged)
         return ds
     }()
     
@@ -31,14 +34,14 @@ class FilterCell: UICollectionViewCell {
 //        delegate?.didChangeDistanceFilterValue(for: distanceFilterValue)
 //    }
     
-    @objc func distanceSliderValueChanged(_ sender: Any) {
-       
-        print((sender as! UISlider).value)
+    @objc func distanceSliderValueChanged(slider: UISlider) {
+        print("sliding...")
+        print(slider.value)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         addSubview(distanceSlider)
         distanceSlider.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 40, paddingBottom: 0, paddingRight: 40, width: 0, height: 0)
     }

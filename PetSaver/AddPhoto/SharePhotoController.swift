@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import MapKit
 import CoreML
+import Vision
 
 
 class SharePhotoController: UIViewController {
@@ -17,11 +18,37 @@ class SharePhotoController: UIViewController {
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocationCoordinate2D?
 
+    let squeezeNetModel = Resnet50()
     
     var selectedImage: UIImage? {
         didSet {
             self.imageView.image = selectedImage
+            detect(image: CIImage(image: self.imageView.image!)!)
         }
+    }
+    
+    func detect(image: CIImage) {
+        guard let model = try? VNCoreMLModel(for: squeezeNetModel.model) else { fatalError() }
+        
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let results = request.results as? [VNClassificationObservation], let topResult = results.first else { fatalError() }
+            
+            DispatchQueue.main.async {
+                print(topResult)
+                self.textView.text = String("\(topResult.identifier) (\((topResult.confidence * 100).rounded())% probability)")
+            }
+        }
+        
+        let handler = VNImageRequestHandler(ciImage: image)
+        DispatchQueue.global(qos: .userInteractive).async {
+            do {
+                try handler.perform([request])
+            } catch {
+                print(error)
+            }
+        }
+        
+        
     }
     
     override func viewDidLoad() {
