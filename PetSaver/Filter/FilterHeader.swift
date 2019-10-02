@@ -8,8 +8,10 @@
 
 import UIKit
 
+
+
 class FilterHeader: UICollectionViewCell {
-    
+            
     var distance: Int = 10
     
     let titleLabel: UILabel = {

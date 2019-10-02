@@ -8,7 +8,13 @@
 
 import UIKit
 
+//protocol DistanceFilterDelegate {
+//    func didChangeDistanceFilterValue(for distance: Int)
+//}
+
 class FilterCell: UICollectionViewCell {
+    
+  //  var delegate: DistanceFilterDelegate?
     
     let distanceSlider: UISlider = {
         let ds = UISlider()
@@ -16,9 +22,19 @@ class FilterCell: UICollectionViewCell {
         ds.maximumValue = 100
         ds.isContinuous = false
         ds.value = 25
-        //ds.addTarget(self, action: #selector(distanceSliderValueChanged), for: .valueChanged)
+        ds.addTarget(self, action: #selector(distanceSliderValueChanged(_:)), for: .valueChanged)
         return ds
     }()
+    
+//    @objc func distanceSliderValueChanged() {
+//        guard let distanceFilterValue = Int(distanceSlider.value) else { return }
+//        delegate?.didChangeDistanceFilterValue(for: distanceFilterValue)
+//    }
+    
+    @objc func distanceSliderValueChanged(_ sender: Any) {
+       
+        print((sender as! UISlider).value)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

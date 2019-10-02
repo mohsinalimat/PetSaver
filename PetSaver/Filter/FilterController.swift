@@ -10,7 +10,7 @@ import UIKit
 
 
 class FilterController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-  
+     
     let cellId = "cellId"
     let headerId = "headerId"
     
@@ -58,6 +58,10 @@ class FilterController: UICollectionViewController, UICollectionViewDelegateFlow
         return CGSize(width: view.frame.width, height: 50)
     }
 
-   
+    
+    
+//   func didChangeDistanceFilterValue(for distance: Int) {
+//    self.distance
+//   }
     
 }
