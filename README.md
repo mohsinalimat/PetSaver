@@ -2,7 +2,4 @@
 
 A location-based MVC app to report pets who need rescuing. The app uses the camera with AVFoundation framework, Core ML to identify the pet, Core Location and MapKit to manage and display current location and Firebase (through CocoaPods) to authenticate users and serve as a database.
 
-![photo_2019-10-28 15 07 25](https://user-images.githubusercontent.com/10127962/67680969-0f152c80-f995-11e9-9822-c2e9f5691647.jpeg)
-
-
-<img src="https://user-images.githubusercontent.com/10127962/67680969-0f152c80-f995-11e9-9822-c2e9f5691647.jpeg"/>
+<img src="https://user-images.githubusercontent.com/10127962/67680969-0f152c80-f995-11e9-9822-c2e9f5691647.jpeg" height="200"/>
